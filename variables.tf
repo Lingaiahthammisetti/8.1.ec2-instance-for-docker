@@ -11,6 +11,6 @@ variable "allow_everything" {
 
 variable "ec2_instance" {
    default = {
-        instance_type  = "t3.micro"
+        instance_type  = "t3.medium"
    }
 }
