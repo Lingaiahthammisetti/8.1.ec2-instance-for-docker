@@ -2,7 +2,7 @@ resource "aws_instance" "ec2_instance" {
     ami           = data.aws_ami.rhel_info.id
     instance_type = var.ec2_instance.instance_type
     vpc_security_group_ids = [var.allow_everything]
-    #user_data = file("${path.module}/install_docker_server.sh")
+    user_data = file("${path.module}/install_docker_server.sh")
 
     root_block_device {
     volume_size = 50  # Size of the root volume in GB
