@@ -6,7 +6,7 @@ systemctl start docker
 systemctl enable docker 
 usermod -aG docker ec2-user 
 
-#echo "******* Resize EBS Storage ****************"
+echo "******* Resize EBS Storage ***Start*************"
 # ec2 instance creation request for Docker expense project
 # =============================================
 # RHEL-9-DevOps-Practice
@@ -14,9 +14,14 @@ usermod -aG docker ec2-user
 # allow-everything
 # 50 GB
 
-# lsblk
-# sudo growpart /dev/nvme0n1 4 
-# sudo lvextend -l +50%FREE /dev/RootVG/rootVol 
-# sudo lvextend -l +50%FREE /dev/RootVG/varVol 
-# sudo xfs_growfs / 
-# sudo xfs_growfs /var 
+lsblk
+sudo growpart /dev/nvme0n1 4 
+sudo lvextend -l +50%FREE /dev/RootVG/rootVol 
+sudo lvextend -l +50%FREE /dev/RootVG/varVol 
+sudo xfs_growfs / 
+sudo xfs_growfs /var 
+echo "******* Resize EBS Storage ***Done***********"
+
+echo "************************"
+systemctl status docker
+echo "************************"

@@ -14,13 +14,13 @@ resource "aws_instance" "ec2_instance" {
         Name = "docker-server"
     }
 }
-# resource "aws_route53_record" "ec2_instance_r53" {
-#     zone_id = var.zone_id
-#     name    = "ec2.${var.domain_name}"
-#     type    = "A"
-#     ttl     = 1
-#     records = [aws_instance.ec2_instance.public_ip]
-#     allow_overwrite = true
-# }
+resource "aws_route53_record" "ec2_instance_r53" {
+    zone_id = var.zone_id
+    name    = "docker.${var.domain_name}"
+    type    = "A"
+    ttl     = 1
+    records = [aws_instance.ec2_instance.public_ip]
+    allow_overwrite = true
+}
 
 
