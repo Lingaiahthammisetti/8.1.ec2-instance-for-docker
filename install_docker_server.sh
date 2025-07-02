@@ -25,3 +25,12 @@ echo "******* Resize EBS Storage ***Done***********"
 echo "************************"
 systemctl status docker
 echo "************************"
+
+
+git clone https://github.com/Lingaiahthammisetti/8.11.expense-docker-for-k8s.git
+cd 8.11.expense-docker-for-k8s
+docker build -t debug:v1.1 .
+docker images
+docker tag debug:v1.1 lingadevops/debug:v1.1
+docker login -u lingadevops -p Welcome#100
+docker push lingadevops/debug:v1.1
