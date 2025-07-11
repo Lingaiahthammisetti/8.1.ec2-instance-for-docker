@@ -5,11 +5,11 @@ resource "aws_instance" "ec2_instance" {
     user_data = file("${path.module}/install_docker_server.sh")
 
     root_block_device {
-    volume_size = 100  # Size of the root volume in GB
-    volume_type = "gp2"  # General Purpose SSD (you can change the volume type if needed)
-    delete_on_termination = true  # Automatically delete the volume when the instance is terminated
+        volume_size = 100
+        volume_type = "gp3"
+        iops        = 3000
+        encrypted   = true
     }
-
     tags = {
         Name = "docker-server"
     }
